@@ -14,7 +14,7 @@ def dataEntry(): #fill the data
         gender.append(int(hemoglobin[index].pop(0)))
 
 def calculateMeans():
-    max, min, posMax, posMin = 0, 0, 0, 0
+    max, min, posMax, posMin = 0, 100, 0, 0
     for i in range(len(hemoglobin)):#cycle in patients
         mean.append(sum(hemoglobin[i]) / len(hemoglobin[i]))
         if max < mean[i]:#finding maximus and position
@@ -23,6 +23,7 @@ def calculateMeans():
         if min > mean[i]:#finding minimum and position
             min = mean[i]
             posMin = i
+        print
     return posMax, posMin
 
 def checkLimitsAndPrint(index):
@@ -31,7 +32,7 @@ def checkLimitsAndPrint(index):
         if mean[value] < limits[gender[value] - 1][0]:
             print(gender[value], "%.2f" % mean[value], 'Baja')
         #according gender compare hemo vs high limit
-        elif mean[value] > limits[value][1]:
+        elif mean[value] > limits[gender[value] - 1][1]:
             print(gender[value], "%.2f" % mean[value], 'Alta')
         else:
             print(gender[value], "%.2f" % mean[value], 'Normal')
@@ -45,5 +46,8 @@ def countPatientsByGender():
 
 dataEntry()
 keysValues = calculateMeans()
+# print(keysValues)
+# print(gender[keysValues[0]], gender[keysValues[1]])
+# print(mean[keysValues[0]], mean[keysValues[1]])
 checkLimitsAndPrint(keysValues)
 countPatientsByGender()
