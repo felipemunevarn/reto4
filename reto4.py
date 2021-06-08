@@ -46,8 +46,5 @@ def countPatientsByGender():
 
 dataEntry()
 keysValues = calculateMeans()
-# print(keysValues)
-# print(gender[keysValues[0]], gender[keysValues[1]])
-# print(mean[keysValues[0]], mean[keysValues[1]])
 checkLimitsAndPrint(keysValues)
 countPatientsByGender()
